@@ -1,0 +1,65 @@
+{
+  "name": "mvp",
+  "version": "1.0.0",
+  "description": "MVP",
+  "keywords": [],
+  "license": "ISC",
+  "author": "Kyle Cordell",
+  "main": "index.js",
+  "scripts": {
+    "babel": "npx babel --watch src --out-dir . --presets react-app/prod",
+    "build-dev": "webpack -w --mode development",
+    "build-prod": "webpack --mode production",
+    "start": "node server/index.js",
+    "start-dev": "nodemon server/index.js",
+    "test": "jest --verbose",
+    "coverage-test": "jest  --collect-coverage",
+    "running-test": "jest  --collect-coverage --verbose --watchAll",
+    "lint": "eslint . --ext .js,.jsx --ignore-pattern node_modules/ --ignore-pattern __tests__/ --ignore-pattern client/dist/"
+  },
+  "jest": {
+    "moduleNameMapper": {
+      "\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$": "<rootDir>/__mocks__/fileMock.js",
+      "\\.(css|less)$": "identity-obj-proxy"
+    }
+  },
+  "dependencies": {
+    "axios": "^0.21.1",
+    "compression": "^1.7.4",
+    "cors": "^2.8.5",
+    "css-loader": "^5.0.1",
+    "express": "^4.17.1",
+    "faker": "^5.1.0",
+    "materialize-css": "^1.0.0-rc.2",
+    "mongoose": "^5.11.11",
+    "nodemon": "^2.0.7",
+    "prop-types": "^15.7.2",
+    "react": "^17.0.1",
+    "react-dom": "^17.0.1",
+    "react-icons": "^4.1.0",
+    "react-materialize": "^3.9.7",
+    "style-loader": "^2.0.0",
+    "webpack": "^5.14.0"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.12.10",
+    "@babel/preset-env": "^7.12.11",
+    "@babel/preset-react": "^7.12.10",
+    "@shelf/jest-mongodb": "^1.2.3",
+    "@testing-library/jest-dom": "^5.11.9",
+    "@testing-library/react": "^11.2.3",
+    "@testing-library/user-event": "^12.6.2",
+    "babel-jest": "^26.6.3",
+    "babel-loader": "^8.2.2",
+    "eslint": "^7.17.0",
+    "eslint-config-airbnb": "^18.2.1",
+    "eslint-plugin-import": "^2.22.1",
+    "eslint-plugin-jsx-a11y": "^6.4.1",
+    "eslint-plugin-react": "^7.22.0",
+    "eslint-plugin-react-hooks": "^4.2.0",
+    "identity-obj-proxy": "^3.0.0",
+    "jest": "^26.6.3",
+    "react-test-renderer": "^17.0.1",
+    "webpack-cli": "^4.3.1"
+  }
+}
