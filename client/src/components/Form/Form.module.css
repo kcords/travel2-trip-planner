@@ -1,0 +1,59 @@
+.photogrid {
+  position: relative;
+  margin: 2rem auto;
+  height: 50vh;
+  min-height: 360px;
+  max-height: 564px;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  overflow: hidden;
+}
+
+.left{
+  height: 100%;
+  width: 50%;
+  padding-right: .4rem;
+}
+
+.right{
+  display: flex;
+  flex-direction: column;
+  height: inherit;
+  width: 50%;
+  height: 100%;
+  padding-left: .4rem;
+}
+
+.upperright{
+  display: flex;
+  flex-direction: row;
+  height: 50%;
+  padding-bottom: .4rem;
+}
+
+.btnContainer {
+  position: absolute;
+  top: 100%;
+  left: 100%;
+  transform: translate(-115%, -155%);
+}
+
+button:first-child {
+  margin-right: .8rem;
+}
+
+.lowerright{
+  display: flex;
+  flex-direction: row;
+  height: 50%;
+  padding-top: .4rem;
+}
+
+.icon {
+  padding-right: 5rem;
+  height: 100%;
+  width: 100%;
+  background-color: blue;
+  flex-grow: 1;
+}
