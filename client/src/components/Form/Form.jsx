@@ -1,11 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-// import { CgLayoutGridSmall } from 'react-icons/cg';
+import { TiDeleteOutline } from 'react-icons/ti';
+import { FiSave } from 'react-icons/fi';
 
+import Button from '../Button/Button';
 import classes from './Form.module.css';
 
 function Form(props) {
-  const { selectedTrip } = props;
+  const { selectedTrip, setSelectedTrip, setView } = props;
 
   const [ tripName, setTripName ] = useState(selectedTrip.tripName);
   const [ destination, setDestination ] = useState('');
@@ -62,7 +64,25 @@ function Form(props) {
           onChange={e => { setEndDate(e.target.value) }}
         ></input>
       </label>
-      <button type="button">Save</button>
+      {/* <button type="button">Save</button> */}
+      <Button
+        clickHandler={e => {
+          setView('trip-list')
+        }}
+        name="saveTripBtn"
+      >
+        <FiSave className={classes.icon} />
+        Save and exit
+      </Button>
+      <Button
+        clickHandler={e => {
+          setView('trip-list')
+        }}
+        name="discardChangesBtn"
+      >
+        <TiDeleteOutline className={classes.icon} />
+        Discard changes
+      </Button>
     </div>
   );
 }

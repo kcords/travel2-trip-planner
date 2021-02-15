@@ -1,9 +1,9 @@
 .tripsSection {
   height: 100%;
-  width: 40%;
+  width: 100%;
   overflow: auto;
-  padding: 2rem;
-  border-right: .25rem ridge rgba(0, 0, 0, .25);
+  padding: 2rem 5rem;
+  /* border-right: .25rem ridge rgba(0, 0, 0, .25); */
 }
 
 .tripsHeader {

@@ -1,5 +1,7 @@
 .list {
+  width: 70%;
   min-height: auto;
   overflow-y: none;
   overflow-y: auto;
+  flex-grow: 2;
 }

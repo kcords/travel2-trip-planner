@@ -12,6 +12,7 @@
   justify-content: flex-start;
   align-items: stretch;
   align-content: stretch;
+  overflow: hidden;
 }
 
 .header {
@@ -21,6 +22,7 @@
   color: white;
   background-color: rgba(7, 4, 31, 0.5);
   flex: 0 1 auto;
+  box-shadow: .3rem 0 .6rem rgba(0, 0, 0, .5);
 }
 
 .section {
@@ -32,16 +34,35 @@
   position: relative;
 }
 
-.content {
-  overflow: auto;
+.tripContent {
+  overflow-y: auto;
+  position: absolute;
+  background-color: white;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-between;
+  align-items: stretch;
+  align-content: stretch;
 }
 
 .icon {
-  margin-right: 2rem;
   padding-right: 1rem;
   height: 100%;
   width: 100%;
   flex-grow: 1;
+}
+
+.visible {
+  opacity: 1;
+  transition: opacity .5s ease-out;
+}
+
+.hidden {
+  opacity: 0;
+  display: none;
+  transition: opacity .5s ease-out;
 }
 
 /* .addButton {

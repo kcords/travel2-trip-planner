@@ -3,7 +3,7 @@ import axios from 'axios';
 import { GrAddCircle } from 'react-icons/gr';
 
 import Trips from '../Trips/Trips';
-import AddButton from '../AddButton/AddButton';
+import Button from '../Button/Button';
 import Form from '../Form/Form';
 import EntryList from '../EntryList/EntryList';
 
@@ -20,12 +20,6 @@ function App() {
     setTripData(dummyData);
   }, [])
 
-  function handleTripSelection(index) {
-    console.log(tripData[index])
-    setSelectedTrip(tripData[index]);
-    setView('individual-trip')
-  }
-
   function getTrips() {
     //TODO FINISH GET REQUEST
     axios.get('/api/trips')
@@ -33,22 +27,46 @@ function App() {
 
   function saveTrip(id) {
     //TODO FINISH PUT REQUEST
-    axios.put(`/${id}`)
+    if(id) {
+      axios.put(`/api/trips/${id}`)
+
+    } else {
+      axios.post('/api/trips/')
+
+    }
+  }
+
+  function handleTripSelection(index) {
+    console.log(tripData[index])
+    setSelectedTrip(tripData[index]);
+    setView('individual-trip')
   }
 
   return (
     <div className={classes.main}>
       <header className={classes.header}>Trip Planner</header>
       <div className={classes.section}>
-        <Trips tripData={tripData} handleTripSelection={handleTripSelection} />
-        <AddButton>
-          <GrAddCircle className={classes.icon} />
-          Add a trip
-        </AddButton>
-        <div className={classes.content}>
-          <Form selectedTrip={selectedTrip} />
+
+        <Trips tripData={tripData} handleTripSelection={handleTripSelection} className={`${view === 'trip-list' ? classes.visible : classes.hidden}`} />
+
+        <div className={`${classes.tripContent} ${view === 'individual-trip' ? classes.visible : classes.hidden}`}>
+          <Form selectedTrip={selectedTrip} setSelectedTrip={setSelectedTrip} setView={setView} />
           <EntryList selectedTrip={selectedTrip} />
         </div>
+
+        <Button
+          clickHandler={e => {
+            setView('individual-trip')
+          }}
+          name="addBtn"
+        >
+          {view === 'trip-list'
+            ? <><GrAddCircle className={classes.icon} /> Add a trip</>
+            : null}
+          {view === 'individual-trip'
+            ? <><GrAddCircle className={classes.icon} /> Add an event</>
+            : null}
+        </Button>
       </div>
     </div>
   );

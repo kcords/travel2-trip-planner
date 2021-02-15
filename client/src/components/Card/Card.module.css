@@ -1,8 +1,8 @@
 .card {
   /* height: 100%; */
   width: 30%;
-  min-width: 45%;
-  max-width: 100%;
+  min-width: 20%;
+  max-width: 95%;
   margin: 1rem;
   padding: 1rem;
   border: .1rem solid rgba(0, 0, 0, .5);
@@ -15,4 +15,9 @@
 
 .card:hover {
   background-color: rgba(37, 93, 152, 0.5);
+}
+
+.card:active {
+  transform: scale(0.96);
+  box-shadow: .15rem .15rem .23rem rgba(0, 0, 0, .5);
 }
