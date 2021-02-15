@@ -1,0 +1,17 @@
+.list {
+  position: relative;
+  width: 70%;
+  min-height: auto;
+  overflow-y: none;
+  overflow-y: auto;
+  flex-grow: 2;
+}
+
+.entryType {
+  position: absolute;
+  top: .75rem;
+  left: .75rem;
+  color: rgba(0, 0, 0, .75);
+  font-size: 1.4rem;
+  font-style: italic;
+}

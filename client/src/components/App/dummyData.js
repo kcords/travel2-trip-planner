@@ -9,12 +9,20 @@ module.exports = {
         {name: "Alaska"},
         {name: "Canada"},
       ],
-      entry: {
-        name: "",
-        type: "",
-        url: "",
-        notes: "",
-      },
+      entries: [
+        {
+          name: "OKC > PDX",
+          type: "Flight",
+          url: "",
+          notes: "One Layover",
+        },
+        {
+          name: "Yukon Excursion",
+          type: "Excursion",
+          url: "",
+          notes: "Day trip to the Yukon",
+        }
+      ],
     },
     {
       tripName: "Summer 2020",
@@ -23,44 +31,50 @@ module.exports = {
       destinations: [
         {name: "Vancouver, WA"},
       ],
-      entry: {
-        name: "",
-        type: "",
-        url: "",
-        notes: "",
-      },
+      entries: [
+        {
+          name: "Enterprise",
+          type: "Car Rental",
+          url: "",
+          notes: "",
+        }
+      ],
     },
     {
       tripName: "Spring 2021",
-      startDate: "",
-      endDate: "",
+      startDate: "2021-05-19",
+      endDate: "2021-05-30",
       destinations: [
-        {name: ""},
+        {name: "Place"},
         {name: ""},
         {name: ""},
       ],
-      entry: {
-        name: "",
-        type: "",
-        url: "",
-        notes: "",
-      },
+      entries: [
+        {
+          name: "Fun thing!",
+          type: "",
+          url: "",
+          notes: "",
+        }
+      ],
     },
     {
       tripName: "Fall 2021",
-      startDate: "",
-      endDate: "",
+      startDate: "2021-09-17",
+      endDate: "2021-09-25",
       destinations: [
-        {name: ""},
+        {name: "Fun destination"},
         {name: ""},
         {name: ""},
       ],
-      entry: {
-        name: "",
-        type: "",
-        url: "",
-        notes: "",
-      },
+      entries: [
+        {
+          name: "Amazing activity",
+          type: "",
+          url: "",
+          notes: "",
+        }
+      ],
     }
   ]
 }
