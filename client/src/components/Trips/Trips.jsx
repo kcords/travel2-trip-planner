@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
-// import axios from 'axios';
-// import { CgLayoutGridSmall } from 'react-icons/cg';
+import moment from 'moment';
 
 import Card from '../Card/Card';
 import classes from './Trips.module.css';
@@ -15,7 +14,7 @@ function Trips(props) {
         {tripData.map((trip, i) => (
           <Card index={String(i)} handleTripSelection={handleTripSelection} key={`${i}${trip.tripName}`} >
             <h3>{trip.tripName}</h3>
-            <span>{`${new Date(Date.parse(trip.startDate)).toLocaleDateString("en-US")} - ${trip.endDate}`}</span>
+            <span>{moment(trip.startDate, 'YYYY-MM-DD').fromNow()}</span>
           </Card>
         ))}
       </div>

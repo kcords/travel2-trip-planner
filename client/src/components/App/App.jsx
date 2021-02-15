@@ -1,8 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-// import { CgLayoutGridSmall } from 'react-icons/cg';
-import Trips from '../Trips/Trips'
-import Form from '../Form/Form'
+import { GrAddCircle } from 'react-icons/gr';
+
+import Trips from '../Trips/Trips';
+import AddButton from '../AddButton/AddButton';
+import Form from '../Form/Form';
+import EntryList from '../EntryList/EntryList';
 
 const { dummyData } = require('./dummyData.js');
 import classes from './App.module.css';
@@ -23,13 +26,28 @@ function App() {
     setView('individual-trip')
   }
 
+  function getTrips() {
+    //TODO FINISH GET REQUEST
+    axios.get('/api/trips')
+  }
+
+  function saveTrip(id) {
+    //TODO FINISH PUT REQUEST
+    axios.put(`/${id}`)
+  }
+
   return (
     <div className={classes.main}>
       <header className={classes.header}>Trip Planner</header>
       <div className={classes.section}>
         <Trips tripData={tripData} handleTripSelection={handleTripSelection} />
+        <AddButton>
+          <GrAddCircle className={classes.icon} />
+          Add a trip
+        </AddButton>
         <div className={classes.content}>
           <Form selectedTrip={selectedTrip} />
+          <EntryList selectedTrip={selectedTrip} />
         </div>
       </div>
     </div>

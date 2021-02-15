@@ -1,0 +1,5 @@
+.list {
+  min-height: auto;
+  overflow-y: none;
+  overflow-y: auto;
+}

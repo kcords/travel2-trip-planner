@@ -9,4 +9,10 @@
   border-radius: .3rem;
   box-shadow: .3rem .3rem .6rem rgba(0, 0, 0, .5);
   overflow: hidden;
+  cursor: pointer;
+  outline: none;
+}
+
+.card:hover {
+  background-color: rgba(37, 93, 152, 0.5);
 }
