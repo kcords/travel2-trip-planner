@@ -11,6 +11,7 @@
   overflow: hidden;
   cursor: pointer;
   outline: none;
+  position: relative;
 }
 
 .card:hover {

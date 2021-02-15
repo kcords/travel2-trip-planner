@@ -10,10 +10,10 @@ function EntryList(props) {
 
   return (
     <div className={classes.list}>
-      {console.log(entries)}
       {entries
         ? entries.map((entry, i) => (
             <Card index={String(i)} key={`${i}${entry.name}`} >
+              <span className={classes.entryType}>{entry.type}</span>
               <h4>{entry.name}</h4>
             </Card>
           ))

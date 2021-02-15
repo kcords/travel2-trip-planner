@@ -23,7 +23,7 @@ function Form(props) {
 
   return (
     <div className={classes.formContainer}>
-      {console.log(selectedTrip)}
+      <h1 className={classes.tripHeader}>{tripName}</h1>
       <label >
         Trip Name
         <input
