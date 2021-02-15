@@ -1,4 +1,9 @@
-.photogrid {
+.formContainer {
+  height: 100%;
+  width: 60%;
+  padding: 3rem;
+}
+/* .photogrid {
   position: relative;
   margin: 2rem auto;
   height: 50vh;
@@ -56,4 +61,4 @@ button:first-child {
   width: 100%;
   background-color: blue;
   flex-grow: 1;
-}
+} */

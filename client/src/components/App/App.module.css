@@ -1,3 +1,35 @@
+.main {
+  height: 80vh;
+  width: 80vw;
+  max-width: 1600rem;
+  /* padding: 2rem; */
+  border: .1rem solid rgba(218, 213, 213, 0.25);
+  box-shadow: .5rem .5rem 1rem rgba(0, 0, 0, .5);
+  border-radius: .5rem;
+  background-color: rgba(255, 255, 255, .90);
+  display: flex;
+  flex-flow: column wrap;
+  justify-content: flex-start;
+  align-items: stretch;
+  align-content: stretch;
+}
+
+.header {
+  padding: .5rem 3rem;
+  font-size: 3rem;
+  border-radius: .5rem .5rem 0 0;
+  color: white;
+  background-color: rgba(7, 4, 31, 0.5);
+}
+
+.section {
+  display: flex;
+  justify-content: space-between;
+  align-items: stretch;
+  align-content: stretch;
+}
+
+/*
 .photogrid {
   position: relative;
   margin: 2rem auto;
@@ -56,4 +88,4 @@ button:first-child {
   width: 100%;
   background-color: blue;
   flex-grow: 1;
-}
+} */

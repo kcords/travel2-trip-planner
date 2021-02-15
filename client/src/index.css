@@ -16,14 +16,20 @@ html {
 }
 
 body {
-  font-size: 1.4rem;
+  font-size: 1.6rem;
   color: var(--black);
   font-family: 'Airbnb Cereal App', system-ui, -apple-system, BlinkMacSystemFont, Roboto, Ubuntu, sans-serif;
   background-color: #fff;
   -webkit-font-smoothing: antialiased;
+  background-image: url("../../client/dist/images/samuel-scrimshaw-2oFdVd00xOg-unsplash.jpg");
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-@font-face {
+/* @font-face {
   font-family: 'Airbnb Cereal App';
   font-style: normal;
   font-weight: 400;
@@ -64,4 +70,4 @@ body {
   font-weight: 900;
   src: local('Airbnb Cereal App'), url('https://fonts.cdnfonts.com/s/22260/AirbnbCerealBlack.woff') format('woff');
   font-display: swap;
-}
+} */

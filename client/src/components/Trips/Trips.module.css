@@ -1,0 +1,25 @@
+.tripsSection {
+  height: 100%;
+  width: 40%;
+  overflow: auto;
+  padding: 2rem;
+  border-right: .25rem ridge rgba(0, 0, 0, .25);
+}
+
+.tripsHeader {
+  position: -webkit-sticky;
+  position: sticky;
+  top: -1px;
+  margin: .5rem 1rem;
+  font-size: 2.5rem;
+  /* padding: 2rem; */
+}
+
+.tripsCardsContainer {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-between;
+  align-items: stretch;
+  align-content: stretch;
+  overflow-y: auto;
+}
