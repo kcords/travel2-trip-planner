@@ -4,6 +4,8 @@
   padding: 3rem;
   flex-grow: 1;
   background-color: rgba(37, 93, 152, .10);
+  display: flex;
+  flex-flow: column;
 }
 
 .tripHeader {
@@ -15,6 +17,19 @@
   padding-bottom: 1rem;
   border-bottom: .1rem solid rgba(0, 0, 0, .05);
   text-shadow: .75rem .75rem 1rem rgba(0, 0, 0, .25);
+}
+
+.formContent {
+  flex: 1 1 auto;
+}
+
+.btnContainer {
+  flex: 0 1 auto;
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-around;
+  align-items: center;
+  flex-grow: 0;
 }
 
 .icon {

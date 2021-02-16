@@ -16,10 +16,11 @@ function Form(props) {
   const [ endDate, setEndDate ] = useState(moment(selectedTrip.endDate).format('YYYY-MM-DD'));
 
   useEffect(() => {
+    console.log(selectedTrip.destinations[0].name)//!REMOVE THIS!
     setTripName(selectedTrip.tripName);
-    // setDestination(selectedTrip.destinations.length ? selectedTrip.destinations[0].name : '');
-    setStartDate(selectedTrip.startDate);
-    setEndDate(selectedTrip.endDate);
+    setDestination(selectedTrip.destinations.length ? selectedTrip.destinations[0].name : '');
+    setStartDate(moment(selectedTrip.startDate).format('YYYY-MM-DD'));
+    setEndDate(moment(selectedTrip.endDate).format('YYYY-MM-DD'));
   }, [selectedTrip])
 
   const updateSelectedTrip = () => {
@@ -36,65 +37,71 @@ function Form(props) {
   return (
     <div className={classes.formContainer}>
       <h1 className={classes.tripHeader}>{selectedTrip.tripName ? tripName : 'New Trip'}</h1>
-      <label >
-        Trip Name
-        <input
-          type="text"
-          className={classes.input}
-          name="tripName"
-          value={tripName}
-          onChange={e => { setTripName(e.target.value) }}
-        ></input>
-      </label>
-      <label >
-        Destination
-        <input
-          type="text"
-          className={classes.input}
-          name="tripDestination"
-          value={destination}
-          onChange={e => { setDestination(e.target.value) }}
-        ></input>
-      </label>
-      <label >
-        Start Date
-        <input
-          type="date"
-          className={classes.input}
-          name="startDate"
-          value={startDate}
-          onChange={e => { setStartDate(e.target.value) }}
-        ></input>
-      </label>
-      <label >
-        End Date
-        <input
-          type="date"
-          className={classes.input}
-          name="endDate"
-          value={endDate}
-          onChange={e => { setEndDate(e.target.value) }}
-        ></input>
-      </label>
-      <Button
-        name="saveTripBtn"
-        clickHandler={e => {
-          updateSelectedTrip();
-          setView('trip-list');
-        }}
-      >
-        <FiSave className={classes.icon} />
-        Save and exit
-      </Button>
-      <Button
-        name="discardChangesBtn"
-        clickHandler={e => {
-          setView('trip-list')
-        }}
-      >
-        <TiDeleteOutline className={classes.icon} />
-        Discard changes
-      </Button>
+      <form className={classes.formContent}>
+        <label >
+          Trip Name
+          <input
+            type="text"
+            className={classes.input}
+            name="tripName"
+            value={tripName}
+            onChange={e => { setTripName(e.target.value) }}
+          ></input>
+        </label>
+        <label >
+          Destination
+          <input
+            type="text"
+            className={classes.input}
+            name="tripDestination"
+            value={destination}
+            onChange={e => { setDestination(e.target.value) }}
+          ></input>
+        </label>
+        <label >
+          Start Date
+          <input
+            type="date"
+            className={classes.input}
+            name="startDate"
+            value={startDate}
+            onChange={e => { setStartDate(e.target.value) }}
+          ></input>
+        </label>
+        <label >
+          End Date
+          <input
+            type="date"
+            className={classes.input}
+            name="endDate"
+            value={endDate}
+            onChange={e => { setEndDate(e.target.value) }}
+          ></input>
+        </label>
+      </form>
+
+      <div className={classes.btnContainer}>
+        <Button
+          name="saveTripBtn"
+          clickHandler={e => {
+            updateSelectedTrip();
+            setView('trip-list');
+          }}
+        >
+          <FiSave className={classes.icon} />
+          Save and exit
+        </Button>
+        <Button
+          name="discardChangesBtn"
+          clickHandler={e => {
+            setView('trip-list')
+          }}
+        >
+          <TiDeleteOutline className={classes.icon} />
+          Discard changes
+        </Button>
+      </div>
+
     </div>
   );
 }

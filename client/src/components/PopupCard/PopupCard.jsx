@@ -9,7 +9,10 @@ function PopupCard(props) {
   const { children, open, setOpen } = props;
 
   return (
-    <div className={classes.popupCard}>
+    <div
+      className={`${classes.popupCard} ${open ? classes.open : classes.closed}`}
+      onClick={() => {setOpen(false)}}
+    >
       {children}
     </div>
   );

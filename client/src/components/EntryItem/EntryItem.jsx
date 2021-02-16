@@ -10,17 +10,18 @@ function EntryItem(props) {
   const { open, setOpen, selectedItem, updateSelected } = props;
   // const { name, type, url, notes } = selectedItem
 
-  const [ name, setName ] = useState(selectedItem.name);
-  const [ type, setType ] = useState(selectedItem.type);
-  const [ url, setUrl ] = useState(selectedItem.url);
-  const [ notes, setNotes ] = useState(selectedItem.notes);
+  const [ name, setName ] = useState('');
+  const [ type, setType ] = useState('');
+  const [ url, setUrl ] = useState('');
+  const [ notes, setNotes ] = useState('');
 
-  // useEffect(() => {
-  //   setName(selectedItem.name);
-  //   setType(selectedItem.type);
-  //   setUrl(selectedItem.url);
-  //   setNotes(selectedItem.notes);
-  // }, [])
+  useEffect(() => {
+    console.log('EntryItem', selectedItem)
+    setName(selectedItem.name);
+    setType(selectedItem.type);
+    setUrl(selectedItem.url);
+    setNotes(selectedItem.notes);
+  }, [selectedItem])
 
   return (
     <div className={`${classes.entryItem} ${open ? classes.open : classes.closed}`}>
@@ -48,6 +49,7 @@ function EntryItem(props) {
           <option value="Entertainment">Entertainment</option>
           <option value="Accommodations">Accommodations</option>
           <option value="Dining">Dining</option>
+          <option value="Other">Other</option>
         </select>
       </label>
       <label >

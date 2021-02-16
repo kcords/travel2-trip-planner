@@ -1,4 +1,5 @@
 .entryItem {
+  position: absolute;
   width: 80%;
   height: 90%;
   padding: 1rem;

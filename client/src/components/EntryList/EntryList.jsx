@@ -14,12 +14,13 @@ function EntryList(props) {
 
   const [ open, setOpen ] = useState(false);
   const [ selectedItem, setSelectedItem ] = useState({});
-  const [ updateIndex, setUpdateIndex ] = useState(-1);
+  const [ updateIndex, setUpdateIndex ] = useState(0);
 
   function openItem(index) {
-    setOpen(true);
     setSelectedItem(entries[index]);
     setUpdateIndex(index);
+    setOpen(true);
+    console.log(selectedItem, updateIndex)//!REMOVE THIS!
   }
 
   function updateSelected(update) {
@@ -45,24 +46,36 @@ function EntryList(props) {
           ))
         : null
       }
-      <div
-        className={`${classes.background} ${open ? classes.open : classes.closed}`}
-        onClick={() => { setOpen(false) }}
-        hidden={!open}
-      />
-      <PopupCard
-        open={open}
-        setOpen={setOpen}
-      >
-        <EntryItem
+      {/* // * Event editor popup */}
+      <>
+        <div
+          className={`${classes.background} ${open ? classes.open : classes.closed}`}
+          onClick={() => { setOpen(false) }}
+          hidden={!open}
+        />
+
+        <PopupCard
           open={open}
           setOpen={setOpen}
-          selectedItem={selectedItem}
-          updateSelected={updateSelected}
-        />
-      </PopupCard>
+        >
+          <EntryItem
+            open={open}
+            setOpen={setOpen}
+            selectedItem={selectedItem}
+            updateSelected={updateSelected}
+          />
+        </PopupCard>
+
+      </>
+      {/* // * Floating Event Button */}
       <Button
         clickHandler={e => {
+          setSelectedItem({
+            name: "",
+            type: "",
+            url: "",
+            notes: "",
+          })
           setOpen(true);
           setUpdateIndex(selectedTrip.entries.length);
         }}
