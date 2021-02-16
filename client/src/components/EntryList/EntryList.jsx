@@ -46,6 +46,7 @@ function EntryList(props) {
           ))
         : null
       }
+      {/* // * Event editor popup */}
       <>
         <div
           className={`${classes.background} ${open ? classes.open : classes.closed}`}
@@ -66,6 +67,7 @@ function EntryList(props) {
         </PopupCard>
 
       </>
+      {/* // * Floating Event Button */}
       <Button
         clickHandler={e => {
           setSelectedItem({

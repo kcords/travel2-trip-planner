@@ -1,19 +1,21 @@
 .popupCard {
   position: absolute;
+  top: 0;
   height: 100%;
   width: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
+  z-index: 10;
 }
-/*
-.background {
+
+/* .background {
   height: 100%;
   width: 100%;
   background-color: rgba(0, 0, 0, .5);
   border: 0;
-} */
-/*
+}  */
+
 .open {
   transform: translateY(0);
   opacity: 1;
@@ -24,4 +26,4 @@
   transform: translateY(100%);
   opacity: 0;
   transition: transform .4s ease-out, opacity .3s ease-out;
-} */
+}

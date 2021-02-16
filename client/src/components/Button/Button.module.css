@@ -40,19 +40,17 @@
   transform: translate(-115%, -155%);
 }
 
-.saveTripBtn {
+/* .saveTripBtn {
   position: absolute;
   top: 100%;
-  /* left: 5%; */
   transform: translate(0, -155%);
 }
 
 .discardChangesBtn {
   position: absolute;
   top: 100%;
-  /* left: 15%; */
   transform: translate(100%, -155%);
-}
+} */
 
 /* .btn:last-child {
   margin-right: 2rem;
