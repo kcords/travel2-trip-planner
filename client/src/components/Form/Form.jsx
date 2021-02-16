@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import axios from 'axios';
+// import axios from 'axios';
+import moment from 'moment';
 import { TiDeleteOutline } from 'react-icons/ti';
 import { FiSave } from 'react-icons/fi';
 
@@ -11,8 +12,8 @@ function Form(props) {
 
   const [ tripName, setTripName ] = useState(selectedTrip.tripName);
   const [ destination, setDestination ] = useState(selectedTrip.destinations[0].name);
-  const [ startDate, setStartDate ] = useState(selectedTrip.startDate);
-  const [ endDate, setEndDate ] = useState(selectedTrip.endDate);
+  const [ startDate, setStartDate ] = useState(moment(selectedTrip.startDate).format('YYYY-MM-DD'));
+  const [ endDate, setEndDate ] = useState(moment(selectedTrip.endDate).format('YYYY-MM-DD'));
 
   useEffect(() => {
     setTripName(selectedTrip.tripName);
@@ -29,7 +30,7 @@ function Form(props) {
     current.endDate = endDate;
     // console.log(current)//!REMOVE THIS!
     setSelectedTrip(current);
-    saveTrip();
+    saveTrip(current._id);
   }
 
   return (

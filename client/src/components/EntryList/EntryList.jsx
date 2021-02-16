@@ -1,21 +1,32 @@
 import React, { useState, useEffect } from 'react';
+import { GrAddCircle } from 'react-icons/gr';
 
 import Card from '../Card/Card';
+import Button from '../Button/Button';
 import EntryItem from '../EntryItem/EntryItem';
 import PopupCard from '../PopupCard/PopupCard';
 
 import classes from './EntryList.module.css';
 
 function EntryList(props) {
-  const { selectedTrip, setSelectedTrip } = props;
+  const { selectedTrip, setSelectedTrip, saveTrip } = props;
   const { entries } = selectedTrip;
 
   const [ open, setOpen ] = useState(false);
   const [ selectedItem, setSelectedItem ] = useState({});
+  const [ updateIndex, setUpdateIndex ] = useState(-1);
 
   function openItem(index) {
     setOpen(true);
     setSelectedItem(entries[index]);
+    setUpdateIndex(index);
+  }
+
+  function updateSelected(update) {
+    let current = Object(selectedTrip);
+    current.entries[updateIndex] = update;
+    console.log(current)//!REMOVE THIS!
+    setSelectedTrip(current);
   }
 
   return (
@@ -47,8 +58,19 @@ function EntryList(props) {
           open={open}
           setOpen={setOpen}
           selectedItem={selectedItem}
+          updateSelected={updateSelected}
         />
       </PopupCard>
+      <Button
+        clickHandler={e => {
+          setOpen(true);
+          setUpdateIndex(selectedTrip.entries.length);
+        }}
+        name="addBtn"
+      >
+        <GrAddCircle className={classes.icon} />
+        Add an event
+      </Button>
     </div>
   );
 }

@@ -14,7 +14,6 @@ const getTrips = (req, res) => {
 
 const createTrip = (req, res) => {
   const { body } = req;
-  console.log(body)//!REMOVE THIS!
   const trip = new Trip(body);
   trip.save()
     .then(() => {
@@ -27,15 +26,16 @@ const createTrip = (req, res) => {
 };
 
 const updateTrip = (req, res) => {
-  // const { id } = req.params;
-  // Trip.find()
-  //   .then((data) => {
-  //     res.send(data);
-  //   })
-  //   .catch((err) => {
-  //     console.log(err);
+  const { id } = req.params;
+  const { body } = req;
+  Trip.findByIdAndUpdate(id, body)
+    .then((data) => {
+      res.send(data);
+    })
+    .catch((err) => {
+      console.log(err);
          res.send().status(500);
-  //   });
+    });
 };
 
 module.exports = { getTrips, createTrip, updateTrip };
