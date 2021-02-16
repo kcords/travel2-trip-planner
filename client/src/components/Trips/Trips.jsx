@@ -11,12 +11,15 @@ function Trips(props) {
     <div className={classes.tripsSection}>
       <h1 className={classes.tripsHeader}>My Trips</h1>
       <div className={classes.tripsCardsContainer}>
-        {tripData.map((trip, i) => (
-          <Card passedValue={String(i)} clickHandler={handleTripSelection} key={`${i}${trip.tripName}`} >
-            <h3>{trip.tripName}</h3>
-            <span>{moment(trip.startDate, 'YYYY-MM-DD').fromNow()}</span>
-          </Card>
-        ))}
+        {tripData.length
+          ? tripData.map((trip, i) => (
+            <Card passedValue={String(i)} clickHandler={handleTripSelection} key={`${i}${trip.tripName}`} >
+              <h3>{trip.tripName}</h3>
+              <span>{moment(trip.startDate, 'YYYY-MM-DD').fromNow()}</span>
+            </Card>
+            ))
+          : null
+        }
       </div>
     </div>
   );

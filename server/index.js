@@ -29,9 +29,6 @@ app.use('/', (req, res, next) => {
 });
 //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
-// app.get('/api/trips', (req, res) => {
-//   console.log('ugh')
-// });
 app.use('/api/', router);
 
 app.listen(PORT, () => {

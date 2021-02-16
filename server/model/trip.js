@@ -24,24 +24,29 @@ const tripSchema = new Schema({
     ],
     required: false,
   },
-  entry: {
-      name: {
-        type: String,
-        required: true,
-      },
-      type: {
-        type: String,
-        required: true,
-      },
-      url: {
-        type: String,
-        required: false,
-      },
-      notes: {
-        type: String,
-        required: false,
-      },
+  entries: {
+    type: [
+      {
+        name: {
+          type: String,
+          required: true,
+        },
+        type: {
+          type: String,
+          required: true,
+        },
+        url: {
+          type: String,
+          required: false,
+        },
+        notes: {
+          type: String,
+          required: false,
+        },
+      }
+    ],
     required: false,
+    default: undefined,
   },
 });
 
