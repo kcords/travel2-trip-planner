@@ -32,10 +32,11 @@
   align-content: stretch;
   flex: 1 1 auto;
   position: relative;
+  overflow: hidden;
 }
 
 .tripContent {
-  overflow-y: auto;
+  overflow-y: hidden;
   position: absolute;
   background-color: white;
   height: 100%;

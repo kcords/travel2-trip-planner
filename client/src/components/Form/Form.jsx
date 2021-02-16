@@ -7,10 +7,10 @@ import Button from '../Button/Button';
 import classes from './Form.module.css';
 
 function Form(props) {
-  const { selectedTrip, setSelectedTrip, setView } = props;
+  const { selectedTrip, setSelectedTrip, setView, saveTrip } = props;
 
   const [ tripName, setTripName ] = useState(selectedTrip.tripName);
-  const [ destination, setDestination ] = useState('');
+  const [ destination, setDestination ] = useState(selectedTrip.destinations[0].name);
   const [ startDate, setStartDate ] = useState(selectedTrip.startDate);
   const [ endDate, setEndDate ] = useState(selectedTrip.endDate);
 
@@ -24,15 +24,17 @@ function Form(props) {
   const updateSelectedTrip = () => {
     let current = Object(selectedTrip);
     current.tripName = tripName;
-    current.destination = destination;
+    current.destinations = [{name: destination}];
     current.startDate = startDate;
     current.endDate = endDate;
+    // console.log(current)//!REMOVE THIS!
     setSelectedTrip(current);
+    saveTrip();
   }
 
   return (
     <div className={classes.formContainer}>
-      <h1 className={classes.tripHeader}>{tripName}</h1>
+      <h1 className={classes.tripHeader}>{selectedTrip.tripName ? tripName : 'New Trip'}</h1>
       <label >
         Trip Name
         <input
@@ -73,22 +75,21 @@ function Form(props) {
           onChange={e => { setEndDate(e.target.value) }}
         ></input>
       </label>
-      {/* <button type="button">Save</button> */}
       <Button
+        name="saveTripBtn"
         clickHandler={e => {
           updateSelectedTrip();
           setView('trip-list');
         }}
-        name="saveTripBtn"
       >
         <FiSave className={classes.icon} />
         Save and exit
       </Button>
       <Button
+        name="discardChangesBtn"
         clickHandler={e => {
           setView('trip-list')
         }}
-        name="discardChangesBtn"
       >
         <TiDeleteOutline className={classes.icon} />
         Discard changes

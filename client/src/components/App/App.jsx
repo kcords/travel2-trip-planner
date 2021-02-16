@@ -24,38 +24,49 @@ function App() {
   const [ selectedTrip, setSelectedTrip ] = useState(tripTemplate);
 
   useEffect(() => {
-    //TODO CHANGE TO GET
+    //TODO CHANGE TO GET >> DONE (PENDING VERIFICATION)
     // console.log('DATA', dummyData)//!REMOVE THIS!
     // setTripData(dummyData);//!REMOVE THIS!
+    console.log('selectedTrip'. selectedTrip)//!REMOVE THIS!
     getTrips();
   }, [])
 
-  useEffect(() => {
-    //TODO CHANGE TO GET
-    console.log('Selected Trip Edited')//!REMOVE THIS!
-  }, [selectedTrip])
+  // useEffect(() => {
+  //   //TODO CHANGE TO SAVETRIP
+  //   console.log('Selected Trip Edited')//!REMOVE THIS!
+  //   saveTrip()
+  // }, [setSelectedTrip])
 
   function getTrips() {
     //TODO FINISH GET REQUEST
     axios.get('/api/trips')
       .then(results => {
-        console.log('trips updated!')//!REMOVE THIS!
-        setTripData(results)
+        console.log('getTrips successful!', results.data)//!REMOVE THIS!
+        setTripData(results.data)
       })
+      .catch(err => {console.log(err)})//!REMOVE THIS!
   }
 
   function saveTrip(id) {
+    console.log('save!', id)//!REMOVE THIS!
     //TODO FINISH PUT REQUEST
     if(id) {
-      axios.put(`/api/trips/${id}`)
+      console.log('PUT!')//!REMOVE THIS!
+      axios.put(`/api/trips/${id}`, selectedTrip)
+        .then(() => {
+          console.log('put success!')//!REMOVE THIS!
+          getTrips()
+        })
+        .catch(err => {console.log(err)})//!REMOVE THIS!
 
     //TODO FINISH POST REQUEST
     } else {
-      axios.post('/api/trips/')
+      axios.post('/api/trips/', selectedTrip)
         .then(() => {
           console.log('post success!')//!REMOVE THIS!
           getTrips()
         })
+        .catch(err => {console.log(err)})//!REMOVE THIS!
     }
   }
 
@@ -73,7 +84,7 @@ function App() {
         <Trips tripData={tripData} handleTripSelection={handleTripSelection} className={`${view === 'trip-list' ? classes.visible : classes.hidden}`} />
 
         <div className={`${classes.tripContent} ${view === 'individual-trip' ? classes.visible : classes.hidden}`}>
-          <Form selectedTrip={selectedTrip} setSelectedTrip={setSelectedTrip} setView={setView} />
+          <Form selectedTrip={selectedTrip} setSelectedTrip={setSelectedTrip} setView={setView} saveTrip={saveTrip} />
           <EntryList selectedTrip={selectedTrip} setSelectedTrip={setSelectedTrip} />
         </div>
 
