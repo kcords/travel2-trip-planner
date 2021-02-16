@@ -16,10 +16,11 @@ function Form(props) {
   const [ endDate, setEndDate ] = useState(moment(selectedTrip.endDate).format('YYYY-MM-DD'));
 
   useEffect(() => {
+    console.log(selectedTrip.destinations[0].name)//!REMOVE THIS!
     setTripName(selectedTrip.tripName);
-    // setDestination(selectedTrip.destinations.length ? selectedTrip.destinations[0].name : '');
-    setStartDate(selectedTrip.startDate);
-    setEndDate(selectedTrip.endDate);
+    setDestination(selectedTrip.destinations.length ? selectedTrip.destinations[0].name : '');
+    setStartDate(moment(selectedTrip.startDate).format('YYYY-MM-DD'));
+    setEndDate(moment(selectedTrip.endDate).format('YYYY-MM-DD'));
   }, [selectedTrip])
 
   const updateSelectedTrip = () => {

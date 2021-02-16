@@ -14,12 +14,13 @@ function EntryList(props) {
 
   const [ open, setOpen ] = useState(false);
   const [ selectedItem, setSelectedItem ] = useState({});
-  const [ updateIndex, setUpdateIndex ] = useState(-1);
+  const [ updateIndex, setUpdateIndex ] = useState(0);
 
   function openItem(index) {
-    setOpen(true);
     setSelectedItem(entries[index]);
     setUpdateIndex(index);
+    setOpen(true);
+    console.log(selectedItem, updateIndex)//!REMOVE THIS!
   }
 
   function updateSelected(update) {
@@ -63,6 +64,12 @@ function EntryList(props) {
       </PopupCard>
       <Button
         clickHandler={e => {
+          setSelectedItem({
+            name: "",
+            type: "",
+            url: "",
+            notes: "",
+          })
           setOpen(true);
           setUpdateIndex(selectedTrip.entries.length);
         }}

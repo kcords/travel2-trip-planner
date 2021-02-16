@@ -14,7 +14,7 @@ const tripTemplate = {
       tripName: '',
       startDate: '',
       endDate: '',
-      destinations: [''],
+      destinations: [{name: ''}],
       entries: [],
     }
 
