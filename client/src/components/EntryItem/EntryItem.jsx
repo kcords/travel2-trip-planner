@@ -24,7 +24,7 @@ function EntryItem(props) {
   }, [selectedItem])
 
   return (
-    <div className={`${classes.entryItem} ${open ? classes.open : classes.closed}`}>
+    <div className={`${classes.entryItem} ${open ? classes.open : classes.closed}`} onClick={e => e.stopPropagation()}>
       <label >
         Event Name
         <input
