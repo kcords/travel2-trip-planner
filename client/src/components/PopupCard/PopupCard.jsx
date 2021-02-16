@@ -11,6 +11,7 @@ function PopupCard(props) {
   return (
     <div
       className={`${classes.popupCard} ${open ? classes.open : classes.closed}`}
+      onMouseDown={e => e.stopPropagation()}
       onClick={() => {setOpen(false)}}
     >
       {children}

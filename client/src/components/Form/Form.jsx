@@ -86,6 +86,8 @@ function Form(props) {
           clickHandler={e => {
             updateSelectedTrip();
             setView('trip-list');
+            // console.log('saved!')
+            saveTrip(selectedTrip._id);
           }}
         >
           <FiSave className={classes.icon} />
