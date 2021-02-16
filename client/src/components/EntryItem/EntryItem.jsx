@@ -7,15 +7,20 @@ import Button from '../Button/Button';
 import classes from './EntryItem.module.css';
 
 function EntryItem(props) {
-  const { open, setOpen, selectedItem } = props;
-  const { name, type, url, notes } = selectedItem
+  const { open, setOpen, selectedItem, updateSelected } = props;
+  // const { name, type, url, notes } = selectedItem
 
-  // const [ name, setName ] = useState('');
-  // const [ type, setType ] = useState('');
-  // const [ url, setUrl ] = useState('');
-  // const [ notes, setNotes ] = useState('');
+  const [ name, setName ] = useState(selectedItem.name);
+  const [ type, setType ] = useState(selectedItem.type);
+  const [ url, setUrl ] = useState(selectedItem.url);
+  const [ notes, setNotes ] = useState(selectedItem.notes);
 
-
+  // useEffect(() => {
+  //   setName(selectedItem.name);
+  //   setType(selectedItem.type);
+  //   setUrl(selectedItem.url);
+  //   setNotes(selectedItem.notes);
+  // }, [])
 
   return (
     <div className={`${classes.entryItem} ${open ? classes.open : classes.closed}`}>
@@ -26,11 +31,17 @@ function EntryItem(props) {
           className={classes.input}
           name="name"
           value={name}
+          onChange={e => { setName(e.target.value) }}
         ></input>
       </label>
       <label >
         Activity Type
-        <select className={`${classes.selectFix} ${classes.input}`} value={type} >
+        <select
+          className={`${classes.selectFix} ${classes.input}`}
+          value={type}
+          onChange={e => { setType(e.target.value) }}
+        >
+          <option value=""></option>
           <option value="Flight">Flight</option>
           <option value="Transportation">Transportation</option>
           <option value="Excursion">Excursion</option>
@@ -46,6 +57,7 @@ function EntryItem(props) {
           className={classes.input}
           name="url"
           value={url}
+          onChange={e => { setUrl(e.target.value) }}
         ></input>
       </label>
       <label >
@@ -55,12 +67,14 @@ function EntryItem(props) {
           className={`materialize-textarea ${classes.input}`}
           name="notes"
           value={notes}
+          onChange={e => { setNotes(e.target.value) }}
         ></textarea>
       </label>
       <div className={classes.buttonRow}>
       <Button
         clickHandler={e => {
-          setOpen(false)
+          updateSelected({ name, type, url, notes });
+          setOpen(false);
         }}
         name="saveEventBtn"
       >

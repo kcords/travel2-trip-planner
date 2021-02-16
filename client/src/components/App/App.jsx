@@ -32,7 +32,7 @@ function App() {
   }, [])
 
   // useEffect(() => {
-  //   //TODO CHANGE TO SAVETRIP
+  //   //TODO CHANGE TO SAVETRIP (DID NOT WORK AS EXPECTED)
   //   console.log('Selected Trip Edited')//!REMOVE THIS!
   //   saveTrip()
   // }, [setSelectedTrip])
@@ -59,7 +59,7 @@ function App() {
         })
         .catch(err => {console.log(err)})//!REMOVE THIS!
 
-    //TODO FINISH POST REQUEST
+    //TODO FINISH POST REQUEST - DONE!!
     } else {
       axios.post('/api/trips/', selectedTrip)
         .then(() => {
@@ -85,7 +85,7 @@ function App() {
 
         <div className={`${classes.tripContent} ${view === 'individual-trip' ? classes.visible : classes.hidden}`}>
           <Form selectedTrip={selectedTrip} setSelectedTrip={setSelectedTrip} setView={setView} saveTrip={saveTrip} />
-          <EntryList selectedTrip={selectedTrip} setSelectedTrip={setSelectedTrip} />
+          <EntryList selectedTrip={selectedTrip} setSelectedTrip={setSelectedTrip} saveTrip={saveTrip} />
         </div>
 
         <Button
@@ -94,13 +94,14 @@ function App() {
             setView('individual-trip');
           }}
           name="addBtn"
+          hidden={view !== 'trip-list'}
         >
           {view === 'trip-list'
             ? <><GrAddCircle className={classes.icon} /> Add a trip</>
             : null}
-          {view === 'individual-trip'
+          {/* {view === 'individual-trip'//! Remove this section!
             ? <><GrAddCircle className={classes.icon} /> Add an event</>
-            : null}
+            : null} */}
         </Button>
       </div>
     </div>
