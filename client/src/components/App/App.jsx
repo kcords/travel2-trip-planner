@@ -10,19 +10,38 @@ import EntryList from '../EntryList/EntryList';
 const { dummyData } = require('./dummyData.js');
 import classes from './App.module.css';
 
+const tripTemplate = {
+      tripName: '',
+      startDate: '',
+      endDate: '',
+      destinations: [''],
+      entries: [],
+    }
+
 function App() {
   const [ tripData, setTripData ] = useState([]);
   const [ view, setView ] = useState('trip-list');
-  const [ selectedTrip, setSelectedTrip ] = useState({});
+  const [ selectedTrip, setSelectedTrip ] = useState(tripTemplate);
 
   useEffect(() => {
-    console.log('DATA', dummyData)
-    setTripData(dummyData);
+    //TODO CHANGE TO GET
+    // console.log('DATA', dummyData)//!REMOVE THIS!
+    // setTripData(dummyData);//!REMOVE THIS!
+    getTrips();
   }, [])
+
+  useEffect(() => {
+    //TODO CHANGE TO GET
+    console.log('Selected Trip Edited')//!REMOVE THIS!
+  }, [selectedTrip])
 
   function getTrips() {
     //TODO FINISH GET REQUEST
     axios.get('/api/trips')
+      .then(results => {
+        console.log('trips updated!')//!REMOVE THIS!
+        setTripData(results)
+      })
   }
 
   function saveTrip(id) {
@@ -30,9 +49,13 @@ function App() {
     if(id) {
       axios.put(`/api/trips/${id}`)
 
+    //TODO FINISH POST REQUEST
     } else {
       axios.post('/api/trips/')
-
+        .then(() => {
+          console.log('post success!')//!REMOVE THIS!
+          getTrips()
+        })
     }
   }
 
@@ -51,12 +74,13 @@ function App() {
 
         <div className={`${classes.tripContent} ${view === 'individual-trip' ? classes.visible : classes.hidden}`}>
           <Form selectedTrip={selectedTrip} setSelectedTrip={setSelectedTrip} setView={setView} />
-          <EntryList selectedTrip={selectedTrip} />
+          <EntryList selectedTrip={selectedTrip} setSelectedTrip={setSelectedTrip} />
         </div>
 
         <Button
           clickHandler={e => {
-            setView('individual-trip')
+            setSelectedTrip(tripTemplate);
+            setView('individual-trip');
           }}
           name="addBtn"
         >
