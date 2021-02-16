@@ -5,6 +5,9 @@
   overflow-y: none;
   /* overflow-y: auto; */
   flex-grow: 2;
+  /* display: flex;
+  justify-content: flex-start;
+  align-items: flex-start; */
 }
 
 .entryType {
