@@ -46,22 +46,26 @@ function EntryList(props) {
           ))
         : null
       }
-      <div
-        className={`${classes.background} ${open ? classes.open : classes.closed}`}
-        onClick={() => { setOpen(false) }}
-        hidden={!open}
-      />
-      <PopupCard
-        open={open}
-        setOpen={setOpen}
-      >
-        <EntryItem
+      <>
+        <div
+          className={`${classes.background} ${open ? classes.open : classes.closed}`}
+          onClick={() => { setOpen(false) }}
+          hidden={!open}
+        />
+
+        <PopupCard
           open={open}
           setOpen={setOpen}
-          selectedItem={selectedItem}
-          updateSelected={updateSelected}
-        />
-      </PopupCard>
+        >
+          <EntryItem
+            open={open}
+            setOpen={setOpen}
+            selectedItem={selectedItem}
+            updateSelected={updateSelected}
+          />
+        </PopupCard>
+
+      </>
       <Button
         clickHandler={e => {
           setSelectedItem({
