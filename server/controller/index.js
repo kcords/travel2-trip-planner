@@ -1,5 +1,5 @@
-const getTrip = require('./trip');
+const getTrip = require('./trips');
 
 module.exports = {
-  getTrip: (req, res) => cal(req, res),
+  getTrip: (req, res) => getTrip(req, res),
 };

@@ -1,8 +1,8 @@
 const { Trip } = require('../model');
 
-const prop = (req, res) => {
+const trips = (req, res) => {
   const { id } = req.params;
-  Property.findOne({ id })
+  Trip.find()
     .then((data) => {
       res.send(data);
     })
@@ -11,4 +11,4 @@ const prop = (req, res) => {
     });
 };
 
-module.exports = prop;
+module.exports = trips;
