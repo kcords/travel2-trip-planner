@@ -49,6 +49,7 @@ function EntryItem(props) {
           <option value="Entertainment">Entertainment</option>
           <option value="Accommodations">Accommodations</option>
           <option value="Dining">Dining</option>
+          <option value="Other">Other</option>
         </select>
       </label>
       <label >
