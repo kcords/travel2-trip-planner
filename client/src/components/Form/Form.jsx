@@ -21,6 +21,15 @@ function Form(props) {
     setEndDate(selectedTrip.endDate);
   }, [selectedTrip])
 
+  const updateSelectedTrip = () => {
+    let current = Object(selectedTrip);
+    current.tripName = tripName;
+    current.destination = destination;
+    current.startDate = startDate;
+    current.endDate = endDate;
+    setSelectedTrip(current);
+  }
+
   return (
     <div className={classes.formContainer}>
       <h1 className={classes.tripHeader}>{tripName}</h1>
@@ -67,7 +76,8 @@ function Form(props) {
       {/* <button type="button">Save</button> */}
       <Button
         clickHandler={e => {
-          setView('trip-list')
+          updateSelectedTrip();
+          setView('trip-list');
         }}
         name="saveTripBtn"
       >

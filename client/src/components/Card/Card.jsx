@@ -5,10 +5,10 @@ import React, { useState, useEffect } from 'react';
 import classes from './Card.module.css';
 
 function Card(props) {
-  const { children, handleTripSelection, index } = props;
+  const { children, clickHandler, passedValue } = props;
 
   return (
-    <button className={classes.card} onClick={e => { handleTripSelection(index) }}>
+    <button className={classes.card} onClick={e => { clickHandler(passedValue) }}>
       {children}
     </button>
   );

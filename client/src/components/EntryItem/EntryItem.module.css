@@ -1,0 +1,49 @@
+.entryItem {
+  width: 80%;
+  height: 90%;
+  padding: 1rem;
+  background-color: white;
+  border: .1rem solid rgba(0, 0, 0, .5);
+  box-shadow: .3rem .3rem .6rem rgba(0, 0, 0, .5);
+  border-radius: .3rem;
+  z-index: 10;
+  display: flex;
+  flex-flow: column;
+}
+
+.open {
+  transform: translateY(0);
+  opacity: 1;
+  transition: transform .3s ease-out, opacity .3s ease-out;
+}
+
+.closed {
+  transform: translateY(100%);
+  opacity: 0;
+  transition: transform .35s ease-out, opacity .3s ease-out;
+}
+
+.selectFix {
+  display: block;
+}
+
+.input {
+  font-size: 1.4rem;
+}
+
+.buttonRow {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-evenly;
+  align-items: flex-end;
+  align-content: center;
+  flex: 1 1 auto;
+  padding-bottom: 4rem;
+}
+
+.icon {
+  padding-right: 1rem;
+  height: 100%;
+  width: 100%;
+  flex-grow: 1;
+}
