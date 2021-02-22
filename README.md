@@ -1,6 +1,9 @@
 ### Description
 A trip planning application for travelers to plan out and organize their activities for their vacation
 
+![Login](demo/trip_planner_login.gif)
+![New Task](demo/trip_planner_task.gif)
+
 ### Setup
 1. Compile bundle.js: `npm run build-dev`
 2. Start the server: `num run start-dev`
