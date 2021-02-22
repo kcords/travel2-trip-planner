@@ -87,7 +87,7 @@ function Form(props) {
             updateSelectedTrip();
             setView('trip-list');
             // console.log('saved!')
-            saveTrip(selectedTrip._id);
+            // saveTrip(selectedTrip._id);
           }}
         >
           <FiSave className={classes.icon} />

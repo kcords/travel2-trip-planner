@@ -43,6 +43,7 @@ function App() {
   }
 
   function saveTrip(id) {
+    console.log('HELLO???')//!REMOVE THIS
     if(id) {
       axios.put(`/api/trips/${id}`, selectedTrip)
         .then(() => {
