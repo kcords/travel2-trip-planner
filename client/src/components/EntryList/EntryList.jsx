@@ -50,6 +50,7 @@ function EntryList(props) {
       <>
         <div
           className={`${classes.background} ${open ? classes.open : classes.closed}`}
+          onMouseDown={e => e.stopPropagation()}
           onClick={() => { setOpen(false) }}
           hidden={!open}
         />

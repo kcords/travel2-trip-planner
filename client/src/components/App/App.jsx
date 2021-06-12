@@ -19,6 +19,7 @@ const tripTemplate = {
     }
 
 function App() {
+  const [ loginActive, setLoginActive ] = useState(false);
   const [ tripData, setTripData ] = useState([]);
   const [ view, setView ] = useState('trip-list');
   const [ selectedTrip, setSelectedTrip ] = useState(tripTemplate);
@@ -42,6 +43,7 @@ function App() {
   }
 
   function saveTrip(id) {
+    console.log('HELLO???')//!REMOVE THIS
     if(id) {
       axios.put(`/api/trips/${id}`, selectedTrip)
         .then(() => {
@@ -64,30 +66,67 @@ function App() {
   }
 
   return (
-    <div className={classes.main}>
-      <header className={classes.header}>Trip Planner</header>
-      <div className={classes.section}>
+    <>{
+      loginActive
+      //* Logged-in view
+      ? <div className={classes.main}>
+          <header className={classes.header}>Trip Planner</header>
+          <div className={classes.section}>
 
-        <Trips tripData={tripData} handleTripSelection={handleTripSelection} className={`${view === 'trip-list' ? classes.visible : classes.hidden}`} />
+            <Trips tripData={tripData} handleTripSelection={handleTripSelection} className={`${view === 'trip-list' ? classes.visible : classes.hidden}`} />
 
-        <div className={`${classes.tripContent} ${view === 'individual-trip' ? classes.visible : classes.hidden}`}>
-          <Form selectedTrip={selectedTrip} setSelectedTrip={setSelectedTrip} setView={setView} saveTrip={saveTrip} />
-          <EntryList selectedTrip={selectedTrip} setSelectedTrip={setSelectedTrip} saveTrip={saveTrip} />
+            <div className={`${classes.tripContent} ${view === 'individual-trip' ? classes.visible : classes.hidden}`}>
+              <Form selectedTrip={selectedTrip} setSelectedTrip={setSelectedTrip} setView={setView} saveTrip={saveTrip} />
+              <EntryList selectedTrip={selectedTrip} setSelectedTrip={setSelectedTrip} saveTrip={saveTrip} />
+            </div>
+
+            <Button
+              clickHandler={e => {
+                setSelectedTrip(tripTemplate);
+                setView('individual-trip');
+              }}
+              name="addBtn"
+              hidden={view !== 'trip-list'}
+            >
+              <GrAddCircle className={classes.icon} />
+              Add a trip
+            </Button>
+          </div>
         </div>
 
-        <Button
-          clickHandler={e => {
-            setSelectedTrip(tripTemplate);
-            setView('individual-trip');
-          }}
-          name="addBtn"
-          hidden={view !== 'trip-list'}
-        >
-          <GrAddCircle className={classes.icon} />
-          Add a trip
-        </Button>
-      </div>
-    </div>
+      //* Logged-out view
+      : <div className={`${classes.main} ${classes.login}`}>
+          <header className={classes.header}>Trip Planner</header>
+          <div className={classes.loginContent}>
+            <label >
+              User name
+              <input
+                type="text"
+                className={classes.input}
+              ></input>
+            </label>
+            <label >
+              Password
+              <input
+                type="password"
+                className={classes.input}
+              ></input>
+            </label>
+            <div className={classes.btnContainer}>
+              <Button
+                clickHandler={() => {setLoginActive(true)}}
+              >
+                Login
+              </Button>
+              <Button>
+                Sign up
+              </Button>
+            </div>
+          </div>
+        </div>
+
+    }</>
+
   );
 }
 

@@ -23,4 +23,7 @@
   align-items: stretch;
   align-content: stretch;
   overflow-y: auto;
+  /* display: flex;
+  justify-content: flex-start;
+  align-items: flex-start; */
 }

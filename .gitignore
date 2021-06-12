@@ -1,5 +1,6 @@
 # User added
 .wastebasket
+.DS_Store
 
 # Logs
 logs
