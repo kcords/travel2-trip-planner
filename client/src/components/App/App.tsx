@@ -42,7 +42,7 @@ function App() {
       .catch(err => {console.log(err)})//!REMOVE THIS!
   }
 
-  function saveTrip(id) {
+  function saveTrip(id: number) {
     console.log('HELLO???')//!REMOVE THIS
     if(id) {
       axios.put(`/api/trips/${id}`, selectedTrip)
@@ -59,7 +59,7 @@ function App() {
     }
   }
 
-  function handleTripSelection(index) {
+  function handleTripSelection(index: number) {
     console.log(tripData[index])
     setSelectedTrip(tripData[index]);
     setView('individual-trip')
@@ -81,7 +81,7 @@ function App() {
             </div>
 
             <Button
-              clickHandler={e => {
+              clickHandler={(e: MouseEvent) => {
                 setSelectedTrip(tripTemplate);
                 setView('individual-trip');
               }}
@@ -118,7 +118,9 @@ function App() {
               >
                 Login
               </Button>
-              <Button>
+              <Button
+                clickHandler={() => {}}
+              >
                 Sign up
               </Button>
             </div>

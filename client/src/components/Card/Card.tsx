@@ -4,7 +4,13 @@ import React, { useState, useEffect } from 'react';
 
 import classes from './Card.module.css';
 
-function Card(props) {
+interface CardProps{
+  children: React.ReactNode,
+  clickHandler: any,
+  passedValue: any
+}
+
+function Card(props: CardProps) {
   const { children, clickHandler, passedValue } = props;
 
   return (

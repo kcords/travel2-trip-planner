@@ -83,7 +83,7 @@ function Form(props) {
       <div className={classes.btnContainer}>
         <Button
           name="saveTripBtn"
-          clickHandler={e => {
+          clickHandler={(e: MouseEvent) => {
             updateSelectedTrip();
             setView('trip-list');
             // console.log('saved!')
@@ -95,7 +95,7 @@ function Form(props) {
         </Button>
         <Button
           name="discardChangesBtn"
-          clickHandler={e => {
+          clickHandler={(e: MouseEvent) => {
             setView('trip-list')
           }}
         >
