@@ -3,7 +3,7 @@ import React, { useState, useEffect } from 'react';
 import classes from './Button.module.css';
 
 interface BtnProps{
-  children?: JSX.Element | string | [JSX.Element, string],
+  children?: React.ReactNode,
   clickHandler: any,
   name?: string,
   hidden?: boolean

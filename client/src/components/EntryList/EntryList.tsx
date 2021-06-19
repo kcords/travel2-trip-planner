@@ -8,7 +8,13 @@ import PopupCard from '../PopupCard/PopupCard';
 
 import classes from './EntryList.module.css';
 
-function EntryList(props) {
+interface EntryListProps{
+  selectedTrip: any,
+  setSelectedTrip: any,
+  saveTrip: boolean
+}
+
+function EntryList(props: EntryListProps) {
   const { selectedTrip, setSelectedTrip, saveTrip } = props;
   const { entries } = selectedTrip;
 
@@ -16,14 +22,14 @@ function EntryList(props) {
   const [ selectedItem, setSelectedItem ] = useState({});
   const [ updateIndex, setUpdateIndex ] = useState(0);
 
-  function openItem(index) {
+  function openItem(index: number) {
     setSelectedItem(entries[index]);
     setUpdateIndex(index);
     setOpen(true);
     console.log(selectedItem, updateIndex)//!REMOVE THIS!
   }
 
-  function updateSelected(update) {
+  function updateSelected(update: boolean) {
     let current = Object(selectedTrip);
     current.entries[updateIndex] = update;
     console.log(current)//!REMOVE THIS!
@@ -33,7 +39,7 @@ function EntryList(props) {
   return (
     <div className={classes.list}>
       {entries
-        ? entries.map((entry, i) => (
+        ? entries.map((entry: any, i: number) => (
             <Card
               index={String(i)}
               key={`${i}${entry.name}`}
@@ -70,7 +76,7 @@ function EntryList(props) {
       </>
       {/* // * Floating Event Button */}
       <Button
-        clickHandler={e => {
+        clickHandler={(e: MouseEvent) => {
           setSelectedItem({
             name: "",
             type: "",

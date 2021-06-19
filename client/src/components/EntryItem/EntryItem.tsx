@@ -6,7 +6,20 @@ import Button from '../Button/Button';
 
 import classes from './EntryItem.module.css';
 
-function EntryItem(props) {
+interface EntryItemsProps{
+  children: React.ReactNode,
+  open: boolean,
+  setOpen: any,
+  selectedItem: {
+    name:string,
+    type: string,
+    url: string,
+    notes: string
+  },
+  updateSelected: any
+}
+
+function EntryItem(props: EntryItemsProps) {
   const { open, setOpen, selectedItem, updateSelected } = props;
   // const { name, type, url, notes } = selectedItem
 
@@ -74,7 +87,7 @@ function EntryItem(props) {
       </label>
       <div className={classes.buttonRow}>
       <Button
-        clickHandler={e => {
+        clickHandler={(e: MouseEvent) => {
           updateSelected({ name, type, url, notes });
           setOpen(false);
         }}
@@ -84,7 +97,7 @@ function EntryItem(props) {
         Save event
       </Button>
       <Button
-        clickHandler={e => {
+        clickHandler={(e: MouseEvent) => {
           setOpen(false)
         }}
         name="discardEventBtn"
